@@ -22,6 +22,7 @@ public class CategoriaResource {
 		//PathVariable faz com que o ID da url vá para o ID da variável
 		// ResponseEntity armazena várias informações de uma resposta Http para um serviço  REST
 		
+		
 		Categoria obj = service.buscar(id);
 		return ResponseEntity.ok().body(obj);
 	}
