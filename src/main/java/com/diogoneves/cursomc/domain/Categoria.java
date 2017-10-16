@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 /*
  * CHECKLIST PARA CRIAR ENTIDADES:
  * 		• Atributos Básicos
@@ -31,7 +29,6 @@ public class Categoria implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	@JsonManagedReference
 	@ManyToMany(mappedBy="categorias")  // "mappedBy" faz com que não precise informar tudo que já havia em "categorias", dentro da classe Produto
 	private List<Produto> produtos = new ArrayList<>();
 
