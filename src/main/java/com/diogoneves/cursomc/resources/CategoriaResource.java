@@ -22,10 +22,10 @@ public class CategoriaResource {
 	private CategoriaService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)  // Procurar mais sobre os verbos REST
-	public ResponseEntity<?> find(@PathVariable Integer id) {  
+	public ResponseEntity<Categoria> find(@PathVariable Integer id) {  
 		//PathVariable faz com que o ID da url vá para o ID da variável
 		// ResponseEntity armazena várias informações de uma resposta Http para um serviço  REST
-		Categoria obj = service.buscar(id);
+		Categoria obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
@@ -34,5 +34,12 @@ public class CategoriaResource {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
+	public ResponseEntity<Void> update(@RequestBody Categoria obj, @PathVariable Integer id) {  // Combinação dos dois últimos, com @RequestBody e @PathVariable
+		obj.setId(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
 	}
 }

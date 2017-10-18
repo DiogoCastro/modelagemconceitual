@@ -18,12 +18,12 @@ public class PedidoResource {
 	private PedidoService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)  // Procurar mais sobre os verbos REST
-	public ResponseEntity<?> find(@PathVariable Integer id) {  
+	public ResponseEntity<Pedido> find(@PathVariable Integer id) {  
 		//PathVariable faz com que o ID da url vá para o ID da variável
 		// ResponseEntity armazena várias informações de uma resposta Http para um serviço  REST
 		
 		
-		Pedido obj = service.buscar(id);
+		Pedido obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 }
