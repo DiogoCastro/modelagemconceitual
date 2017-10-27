@@ -1,6 +1,7 @@
 package com.diogoneves.cursomc.services;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,9 @@ public class PedidoService {
 		 }
 		 return obj;
 	}	
-	
+	public List<Pedido> findAll(){
+		return repo.findAll();
+	}
 	public Pedido insert(Pedido obj) {
 		obj.setId(null);
 		obj.setInstante(new Date());

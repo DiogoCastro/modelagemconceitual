@@ -1,6 +1,7 @@
 package com.diogoneves.cursomc.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -31,6 +32,14 @@ public class PedidoResource {
 		
 		Pedido obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	@RequestMapping(method=RequestMethod.GET)  // Procurar mais sobre os verbos REST
+	public List<Pedido> findAll() {  
+		// ResponseEntity armazena várias informações de uma resposta Http para um serviço  REST
+		
+		
+		return service.findAll();
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
